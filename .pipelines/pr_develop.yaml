@@ -1,9 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-# Pull Request Triggers (triggers the pipeline whenever a pull request is opened with the specified target branches)
 trigger: none
 
 pr:
@@ -17,17 +11,7 @@ pr:
 
 pool: Default
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: 
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
+steps: 
 - script: |
     if ! command -v cppcheck &> /dev/null
     then
@@ -41,6 +25,6 @@ steps:
 
 - script: |
     cppcheck --version
-    cppcheck --enable=all ./src/track1/*.* report1.txt
-    cppcheck --enable=all ./src/track2/*.* report2.txt 
+    cppcheck --enable=all ./src/track1/*.*
+    cppcheck --enable=all ./src/track2/*.*
   displayName: 'Run cppcheck'
