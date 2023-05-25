@@ -29,6 +29,9 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+- script: |
+    echo "GCC has been installed."
+    displayName: 'Install gcc'
 
 - script: |
     if ! command -v cppcheck &> /dev/null
