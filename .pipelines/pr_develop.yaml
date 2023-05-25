@@ -44,8 +44,7 @@ steps:
             exit 1
         fi
       fi
-    fi
-  echo "GCC has been installed."
+  echo :"GCC has been installed."
   displayName: 'Install gcc'
 
 - script: 
