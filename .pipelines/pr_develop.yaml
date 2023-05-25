@@ -29,8 +29,10 @@ steps:
   displayName: 'Run a multi-line script'
 
 
-- task: WhiteSource@21
+- task: SnykSecurityScan@1
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
-    projectName: 'testWhite'
+    serviceConnectionEndpoint: 'vinhdinh'
+    testType: 'app'
+    monitorWhen: 'always'
+    failOnIssues: true
 
