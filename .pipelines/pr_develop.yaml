@@ -15,8 +15,7 @@ pr:
     - README.md
     - .gitignore
 
-pool:
-  vmImage: ubuntu-latest
+pool: Default
 
 steps:
 - script: echo Hello, world!
