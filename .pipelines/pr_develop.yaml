@@ -1,6 +1,4 @@
 # Starter pipeline
-
-
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -17,17 +15,50 @@ pr:
     - README.md
     - .gitignore
 
-pool: Default
-
-
+pool:
+  vmImage: ubuntu-latest
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
+- script: 
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: SonarCloudAnalyze@1
+- script: 
+  if ! command -v gcc &> /dev/null; then
+    echo "GCC hasn't installed."
+    if [ -x "$(command -v apt)" ]; then
+          echo "Installing GCC with apt..."
+          sudo apt update
+          sudo apt install -y gcc
+      elif [ -x "$(command -v yum)" ]; then
+          echo "Installing gcc with Yum..."
+          sudo yum update
+          sudo yum install -y gcc
+      else
+          echo "Cannot file gcc."
+          exit 1
+      fi
+    fi
+  echo "GCC has been installed."
+  displayName: 'Install gcc'
+
+- script: 
+    if ! command -v cppcheck &> /dev/null
+    then
+      echo "cppcheck not found, installing..."
+      sudo apt-get update
+      sudo apt-get install -y cppcheck
+    else
+      echo "cppcheck already installed"
+    fi
+  displayName: 'Install cppcheck'
+
+- script: 
+    cppcheck --version
+    cppcheck --enable=all ./src/track1/*.*
+    cppcheck --enable=all ./src/track2/*.*
+  displayName: 'Run cppcheck'
