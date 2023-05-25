@@ -43,7 +43,6 @@ steps:
           exit 1
       fi
     fi
-  echo "GCC has been installed."
   displayName: 'Install gcc'
 
 - script: 
