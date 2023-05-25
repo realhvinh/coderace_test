@@ -45,7 +45,7 @@ steps:
         fi
       fi
     echo "GCC has been installed."
-    displayName: 'Install gcc'
+  displayName: 'Install gcc'
 
 - script: |
     if ! command -v cppcheck &> /dev/null
