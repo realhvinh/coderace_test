@@ -33,7 +33,17 @@ steps:
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
 
-- task: RunCpptest@1
+- task: Application security testing@2023
   inputs:
-    workingDir: '$(System.DefaultWorkingDirectory)'
+    projectName: 'checkmarx'
+    enableProxy: true
+    enableSastScan: true
+    fullScansScheduled: true
+    denyProject: true
+    generatePDFReport: true
+    vulnerabilityThreshold: true
+    failBuildForNewVulnerabilitiesEnabled: true
+    enablePolicyViolations: true
+    avoidDuplicateScans: true
+    enableDependencyScan: false
 
