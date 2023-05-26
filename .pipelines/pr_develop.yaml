@@ -28,3 +28,7 @@ steps:
     cppcheck --enable=all ./src/track1/*.*
     cppcheck --enable=all ./src/track2/*.*
   displayName: 'Run cppcheck'
+
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
